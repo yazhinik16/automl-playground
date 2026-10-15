@@ -16,6 +16,6 @@ ML Explorer v3 is a feature-rich, high-performance **AutoML & Interactive Predic
 
 
 
-PREVIEW APP:https://ml-explorer-v3-1021744287518.us-west1.run.app/
+
 
 
