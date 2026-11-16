@@ -2,5 +2,7 @@
   "name": "AutoML Playground",
   "description": "An automated Machine Learning (AutoML) platform and algorithm learning lab",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
