@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Host Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Host Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --p-bg: #f7f9fa;
+  --p-surface: #ecf0f2;
+  --p-card: #ffffff;
+  --p-ink: #1f3038;
+  --p-muted: #5d6b72;
+  --p-accent: #0d7480;
+  --p-accent-ink: #ffffff;
+  --p-inv-bg: #111111;
+  --p-inv-surface: #1c1c1c;
+  --p-inv-ink: #f4f4f4;
+
+  --ground-bg: #d9ccb7;
+  --ground-surface: #e9e0d2;
+  --ground-ink: #2a2622;
+  --ground-muted: #5a534a;
+
+  --m-in: 200ms;
+  --m-out: 160ms;
+  --m-press: 100ms;
+  --m-slide: 280ms;
+  --m-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --m-ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --m-ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    background-color: var(--p-bg);
+    color: var(--p-ink);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* taste-skill button micro-interactions */
+  .ts-btn {
+    transition:
+      background-color var(--m-in) var(--m-ease),
+      color var(--m-in) var(--m-ease),
+      border-color var(--m-in) var(--m-ease),
+      box-shadow var(--m-in) var(--m-ease),
+      transform var(--m-press) var(--m-ease);
+    will-change: transform;
+  }
+  .ts-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px rgba(13, 116, 128, 0.28);
+  }
+  .ts-btn:active:not(:disabled) {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: none;
+  }
+
+  /* taste-skill linked card lift */
+  .ts-card-link {
+    transition:
+      transform var(--m-in) var(--m-ease),
+      border-color var(--m-in) var(--m-ease),
+      background-color var(--m-in) var(--m-ease),
+      box-shadow var(--m-in) var(--m-ease);
+    will-change: transform;
+  }
+  .ts-card-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px -14px rgba(31, 48, 56, 0.14);
+  }
+  .ts-card-link:active {
+    transform: translateY(-1px) scale(0.992);
+  }
+
+  /* Interactive select & checkbox smooth transitions */
+  select,
+  input[type="checkbox"] {
+    transition:
+      border-color var(--m-in) var(--m-ease),
+      background-color var(--m-in) var(--m-ease),
+      box-shadow var(--m-in) var(--m-ease);
+  }
+
+  /* Precision range slider */
+  input[type="range"].taste-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 9999px;
+    outline: none;
+    transition: filter var(--m-in) var(--m-ease);
+  }
+
+  input[type="range"].taste-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 9999px;
+    background: #0d7480;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 4px rgba(31, 48, 56, 0.28);
+    cursor: pointer;
+    transition: transform var(--m-in) var(--m-ease), box-shadow var(--m-in) var(--m-ease), background-color var(--m-in) var(--m-ease);
+  }
+
+  input[type="range"].taste-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.18);
+    box-shadow: 0 0 0 5px rgba(13, 116, 128, 0.16);
+  }
+
+  input[type="range"].taste-slider::-webkit-slider-thumb:active {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 7px rgba(13, 116, 128, 0.22);
+  }
+
+  input[type="range"].taste-slider::-moz-range-thumb {
+    width: 17px;
+    height: 17px;
+    border-radius: 9999px;
+    background: #0d7480;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 4px rgba(31, 48, 56, 0.28);
+    cursor: pointer;
+    transition: transform var(--m-in) var(--m-ease), box-shadow var(--m-in) var(--m-ease), background-color var(--m-in) var(--m-ease);
+  }
+
+  /* Clean light scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f7f9fa;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(31, 48, 56, 0.18);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 48, 56, 0.32);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-btn:hover,
+  .ts-btn:active,
+  .ts-card-link:hover {
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
